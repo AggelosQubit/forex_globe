@@ -1,5 +1,5 @@
 # forex_globe
-
+Incoming New Forex Clock to monitor Opening and Closing Markets in relations to the Forex Exchange
 ## Project setup
 ```
 npm install
