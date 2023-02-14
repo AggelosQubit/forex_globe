@@ -1,0 +1,23 @@
+@font-face{
+    font-family:'Epyval';
+    src: url(../public/fonts/epyval/Epyval.ttf);
+  }
+  html, body, #root{
+    margin: 0;
+    padding: 0;
+    height:100%;
+    font-family:'Epyval';
+    src: url(../public/fonts/epyval/Epyval.ttf);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: black;
+    color:turquoise;
+  }
+  
+  p{
+    font-family:'Epyval';
+    src: url(../public/fonts/epyval/Epyval.ttf);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
