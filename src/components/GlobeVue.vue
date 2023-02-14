@@ -29,7 +29,7 @@ import * as THREE from 'three';
 import * as dat from 'dat.gui';
 import mitt from 'mitt'
 
-import   { OrbitControls } from 'c:/Users/Linar/Documents/DEVELOPPEMENT WEB/forex_globe/node_modules/three/examples/jsm/controls/OrbitControls';
+import   { OrbitControls } from '../../node_modules/three/examples/jsm/controls/OrbitControls';
 export default {
 	data () {
 		return{
