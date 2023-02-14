@@ -1,26 +1,46 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+	<div>
+		<h1 class="title1">
+			Forex Clock
+		</h1>
+		<GlobeVue />
+		<TownMarkersVue :scene="scene"/>
+
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+	import GlobeVue from './components/GlobeVue.vue';
+	import TownMarkersVue from './components/TownMarkersVue.vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+
+	export default {
+		components: {
+			GlobeVue,
+			TownMarkersVue
+		}, 
+		mounted() {
+			this.$nextTick(
+				() => {
+					this.$refs.townMarkers.setScene(this.$refs.globe.scene);
+				}
+			);
+		}
+	};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+	body {
+		margin: 0;
+	}
+	.title1{
+		width: 100%;
+		position: absolute;
+		font-size: 4em;
+		text-align: center;
+		color: turquoise;
+	}
+	canvas {
+	display: block;
+	}
 </style>
