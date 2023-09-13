@@ -1,23 +1,19 @@
 <template>
-	<div>
 		<h1 class="title1">
 			Forex Clock
 		</h1>
 		<GlobeVue />
-		<TownMarkersVue :scene="scene"/>
-
-	</div>
+		<PlayerVue />
 </template>
 
 <script>
 	import GlobeVue from './components/GlobeVue.vue';
-	import TownMarkersVue from './components/TownMarkersVue.vue';
-
-
+	import PlayerVue from './components/PlayerVue.vue';
 	export default {
 		components: {
 			GlobeVue,
-			TownMarkersVue
+			PlayerVue
+			
 		}, 
 		mounted() {
 			this.$nextTick(
@@ -30,17 +26,18 @@
 </script>
 
 <style>
-	body {
-		margin: 0;
-	}
 	.title1{
+		position: relative;
 		width: 100%;
-		position: absolute;
 		font-size: 4em;
 		text-align: center;
 		color: turquoise;
+		margin: 0;
+		z-index: 1;
 	}
 	canvas {
-	display: block;
+		position: fixed;
+		top: 0%;
+		left: 0%;
 	}
 </style>
