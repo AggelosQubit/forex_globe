@@ -59,31 +59,25 @@
                 </animateTransform>
             </defs>
         </svg>
+        <h2>{{ localHours }}</h2>
     </div>
 </template>
 <script>
 	export default {
         props:{
-            localHours:Date
+            localHours: Date.now
         }
-        ,data() {
-            return {
-                scene: null
-            };
-        },
-        created() {
-
-        },    
+        ,   
         mounted(){
             console.log(this.localHours);
-            var date = ( this.localHours==null ||  this.localHours==undefined)?new Date : this.localHours;
+            var date    = ( this.localHours==null ||  this.localHours==undefined)?new Date : this.localHours;
             var seconds = date.getSeconds();
             var minutes = date.getMinutes();
-            var hours = date.getHours();
-            hours = (hours > 12) ? hours - 12 : hours;
+            var hours   = date.getHours();
+            hours       = (hours > 12) ? hours - 12 : hours;
 
-            minutes = (minutes * 60) + seconds;
-            hours = (hours * 3600) + minutes;
+            minutes     = (minutes * 60) + seconds;
+            hours       = (hours * 3600) + minutes;
 
             document.querySelector('.iconic-clock-second-hand').setAttribute('transform', 'rotate('+360*(seconds/60)+',192,192)');
             document.querySelector('.iconic-clock-minute-hand').setAttribute('transform', 'rotate('+360*(minutes/3600)+',192,192)');

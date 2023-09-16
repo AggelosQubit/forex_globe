@@ -1,6 +1,6 @@
 <template>
 	<div class="TownMarkersVue">
-		<TownMarkersVue :localHours="localHours" />
+		<TownMarkersVue/>
 	</div>
 </template>
 <style>
@@ -27,13 +27,8 @@
 				scene: null,
 				camera: null,
 				renderer: null,
-				now : new Date
+				
 			}
-		},
-		computed:{
-			localHours : function(){
-				return (this.now).getHours() +":"+(this.now).getMinutes() +":"+(this.now).getSeconds();
-			} 
 		},
 		mounted() {
 			// Scene, Camera, Renderer

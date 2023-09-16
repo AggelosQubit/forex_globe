@@ -14,14 +14,7 @@
 			GlobeVue,
 			PlayerVue
 			
-		}, 
-		mounted() {
-			this.$nextTick(
-				() => {
-					this.$refs.townMarkers.setScene(this.$refs.globe.scene);
-				}
-			);
-		}
+		},
 	};
 </script>
 
