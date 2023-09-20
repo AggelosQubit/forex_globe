@@ -27,6 +27,7 @@
 		color: turquoise;
 		margin: 0;
 		z-index: 1;
+		text-shadow : 3px 3px 3px wheat;
 	}
 	canvas {
 		position: fixed;

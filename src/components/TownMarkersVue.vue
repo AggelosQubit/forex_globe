@@ -5,17 +5,19 @@
         </div>
         <div class="FinanceCentersHourComponent">
             <div class="TownCardElement">
-                <h1>Paris</h1>
-                <ClockVue />
+                <ClockVue TownName="New York"/>
             </div>
             <div class="TownCardElement">
-                <h1>New York</h1>
-                <ClockVue />
+                <ClockVue TownName="London"/>
             </div>
             <div class="TownCardElement">
-                <h1>Tokyo</h1>
-                <ClockVue/>
+                <ClockVue TownName="Paris"/>
             </div>
+
+            <div class="TownCardElement">
+                <ClockVue TownName="Tokyo"/>
+            </div>
+
         </div>
     </div>
 </template>
@@ -30,7 +32,7 @@ export default {
     data() {
         return {
 			towns : ["Paris","New York","Tokyo"],
-            now: (new Date).getHours() +":"+(new Date).getMinutes() +":"+(new Date).getSeconds(),
+            now: this.getLocalHours(),
 			api_key:'d47a4adf9121f10b52f9d5f8adbfbee8',
 			url_base:"https://api.openweathermap.org/data/2.5/",
 			query:'',
@@ -47,12 +49,16 @@ export default {
     created() {
         // Update the time every second
         setInterval(() => {
-            this.now =  (new Date).getHours() +":"+(new Date).getMinutes() +":"+(new Date).getSeconds();
+            this.now = this.getLocalHours();
         }, 1000);
     },
     methods: {
         getLocalHours() {
-            return this.localHours;
+            let hours     = ((new Date).getHours()>9) ? (new Date).getHours() : "0"+(new Date).getHours() ;
+            let minutes   = ((new Date).getMinutes()>9) ? (new Date).getMinutes() : "0"+(new Date).getMinutes() ;
+            let seconds   = ((new Date).getSeconds()>9) ? (new Date).getSeconds() : "0"+(new Date).getSeconds() ;
+
+            return hours+":"+minutes +":"+seconds;
         },
     },
 };
@@ -78,6 +84,6 @@ export default {
     margin-bottom: 50px;
     width: 270px;
     text-align: center;
-    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 3px 2px rgba(255, 255, 255, 0.2);
 }
 </style>
