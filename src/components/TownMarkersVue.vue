@@ -5,9 +5,6 @@
         </div>
         <div class="FinanceCentersHourComponent">
             <div class="TownCardElement">
-                <ClockVue TownName="New York"/>
-            </div>
-            <div class="TownCardElement">
                 <ClockVue TownName="London"/>
             </div>
             <div class="TownCardElement">
@@ -38,13 +35,6 @@ export default {
 			query:'',
 			weather:{}
         };
-    },
-    computed() {
-		return {
-			localHours() {
-				return (this.now).getHours() +":"+(this.now).getMinutes() +":"+(this.now).getSeconds();
-			},
-		}
     },
     created() {
         // Update the time every second
