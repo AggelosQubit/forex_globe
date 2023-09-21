@@ -5,7 +5,7 @@
         </div>
         <div class="FinanceCentersHourComponent">
             <div class="TownCardElement">
-                <ClockVue TownName="London"/>
+                <ClockVue TownName="New York"/>
             </div>
             <div class="TownCardElement">
                 <ClockVue TownName="Paris"/>
