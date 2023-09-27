@@ -3,16 +3,20 @@
 			Forex Clock
 		</h1>
 		<GlobeVue />
+		<PairsVue />
 		<PlayerVue />
 </template>
 
 <script>
 	import GlobeVue from './components/GlobeVue.vue';
 	import PlayerVue from './components/PlayerVue.vue';
+	import PairsVue from './components/PairsVue.vue';
+
 	export default {
 		components: {
 			GlobeVue,
-			PlayerVue
+			PlayerVue,
+			PairsVue
 			
 		},
 	};

@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     height:100%;
+    width: 100%;
     font-family:'Epyval';
     src: url(../public/fonts/epyval/Epyval.ttf);
     -webkit-font-smoothing: antialiased;
