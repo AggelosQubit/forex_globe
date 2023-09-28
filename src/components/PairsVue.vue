@@ -1,7 +1,7 @@
 <template>
     <div  class="PairsGeneralComponent">
         <div  class="PairsComponent">
-            <select class="PairsSelectComponent form-control">
+            <select @change="PairsInfos($event)" class="PairsSelectComponent form-control">
                 <option  disabled >Major Forex Pairs</option>
                 <hr/>
                 <option value="EUR_USD">EUR/USD – Euro/US dollar</option>
@@ -40,8 +40,6 @@
                 <option value="USD_SEK">USD/SEK – US dollar/Swedish krona</option>
                 <option value="USD_DKK">USD/DKK – US dollar/Danish krone</option>
             </select>
-            <button type="button" v-on:click="PairsInfos()" class="btn btn-info  form-control" >Infos</button>
-
             <div class="PairsInfoComponent">
             <p></p>
         </div>
@@ -95,8 +93,8 @@
             }
         },
         methods:{
-            PairsInfos : () => {
-
+            PairsInfos : ($event) => {
+                console.log($event.target.value);
             }
         }
         
