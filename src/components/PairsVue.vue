@@ -1,7 +1,8 @@
 <template>
     <div  class="PairsGeneralComponent">
         <div  class="PairsComponent">
-            <select @change="PairsInfos($event)" class="PairsSelectComponent form-control">
+            <div class="PairsSelectComponent">
+                <select @change="PairsInfos($event)" class=" form-control">
                 <option  disabled >Major Forex Pairs</option>
                 <hr/>
                 <option value="EUR_USD">EUR/USD – Euro/US dollar</option>
@@ -40,9 +41,15 @@
                 <option value="USD_SEK">USD/SEK – US dollar/Swedish krona</option>
                 <option value="USD_DKK">USD/DKK – US dollar/Danish krone</option>
             </select>
-            <div class="PairsInfoComponent">
-            <p></p>
+            </div>
         </div>
+        <div v-if="filled" class="PairsInfoComponent">
+            <div class="TownCardElement">
+                <ClockVue :key="componentKey" :TownName="TownPrimary"/>
+            </div>
+            <div class="TownCardElement">
+                <ClockVue :key="componentKey" :TownName="TownSecondary"/>
+            </div>
         </div>
     </div>
 </template>
@@ -51,50 +58,88 @@
         position: relative;
         text-wrap: nowrap;
 		z-index: 1;
-        height: 200px;
-        display: flex;
-        justify-content: space-around
-        
+        display: block;
 	}
     .PairsComponent{
-        width: 19%;
+        display: flex;
+        justify-content: space-around;
     }
     .PairsSelectComponent{
-        text-align: justify;
+        width: 19%;
         height: 60px;
     }
     .PairsSelectComponent :disabled{
         text-align: center;
     }
+
+    .PairsInfoComponent{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around
+    }
+    .TownCardElement {
+    color: wheat;
+    background-color: rgb(32, 32, 32);
+    height: 350px;
+    border-radius: 8px;
+    margin-bottom: 50px;
+    width: 270px;
+    text-align: center;
+    box-shadow: 3px 3px 3px 2px rgba(255, 255, 255, 0.2);
+}
 </style>
 <script>
+    import ClockVue from './ClockVue.vue';
+    import { ref } from 'vue';
+
     export default{
+        components :{
+            ClockVue
+        },
         data(){
             return{
+                componentKey: ref(0),
                 pair:String,
-                correspondance : [
-                    { "primary":"EUR","Town":"Paris"},
-                    { "primary":"USD","Town":"New York"},
-                    { "primary":"GBP","Town":"London"},
-                    { "primary":"CHF","Town":"Zurich"},
-                    { "primary":"JPY","Town":"Tokyo"},
-                    { "primary":"AUD","Town":"Sydney"},
-                    { "primary":"NZD","Town":"Wellington, NZ"},
-                    { "primary":"CAD","Town":"Toronto"},
-                    { "primary":"TRY","Town":"Ankara"},
-                    { "primary":"MXN","Town":"Mexico City"},
-                    { "primary":"ZAR","Town":"Pretoria"},
-                    { "primary":"HKD","Town":"Hong Kong, HK"},
-                    { "primary":"SGD","Town":"Singapore"},
-                    { "primary":"THB","Town":"Bangkok"},
-                    { "primary":"SEK","Town":"Stockholm"},
-                    { "primary":"DKK","Town":"Copenhague"},
-                ]
+                correspondance :Map,
+                filled:false,
+                TownPrimary:String,
+                TownSecondary:String
             }
         },
+        created(){
+            this.correspondance = new Map() 
+            this.correspondance.set("EUR","Paris");
+            this.correspondance.set("USD","New York");
+            this.correspondance.set("GBP","London");
+            this.correspondance.set("CHF","Zurich");
+            this.correspondance.set("JPY","Tokyo");
+            this.correspondance.set("AUD","Sydney");
+            this.correspondance.set("NZD","Wellington, NZ");
+            this.correspondance.set("CAD","Toronto");
+            this.correspondance.set("TRY","Ankara");
+            this.correspondance.set("MXN","Mexico City");
+            this.correspondance.set("ZAR","Pretoria");
+            this.correspondance.set("HKD","Hong Kong, HK");
+            this.correspondance.set("SGD","Singapore");
+            this.correspondance.set("THB","Bangkok");
+            this.correspondance.set("SEK","Stockholm");
+            this.correspondance.set("DKK","Copenhague");
+            console.log("IN CREATED");
+            console.log( this.correspondance);
+        },  
         methods:{
-            PairsInfos : ($event) => {
-                console.log($event.target.value);
+            PairsInfos : function ($event){
+                let pairCurrency = ($event.target.value).split("_");
+                console.log("ComponentKey : " + this.componentKey);
+                this.filled=false;
+                
+                this.TownPrimary    =this.correspondance.get(pairCurrency[0]);
+                this.TownSecondary  =this.correspondance.get(pairCurrency[1]);
+                this.filled=true;
+                this.forceRerender();
+            },
+            forceRerender: function() {
+                this.componentKey += 1;
             }
         }
         
