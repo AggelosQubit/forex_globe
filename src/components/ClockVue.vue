@@ -87,7 +87,7 @@
                     date.getUTCMinutes(), 
                     date.getUTCSeconds()
                 );
-                now_utc  = now_utc - 7200000 // CONVERTION +2 GMT  
+                now_utc  = now_utc - 3600000 // CONVERTION +2 GMT / CONVERTION +1 GMT HEURE d'HIVER
                 now_utc  = now_utc + (this.weather.timezone*1000)   //CONVERSION MILLISEC 
                 this.now_utcc = now_utc;
                 this.ClockInit();

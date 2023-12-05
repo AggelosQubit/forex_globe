@@ -5,21 +5,18 @@
 		<GlobeVue />
 		<PairsVue />
 		<PlayerVue />
-		<TradingStrategyVue/>
 </template>
 
 <script>
 	import GlobeVue from './components/GlobeVue.vue';
 	import PlayerVue from './components/PlayerVue.vue';
 	import PairsVue from './components/PairsVue.vue';
-	import TradingStrategyVue from './components/TradingStrategyVue.vue';
 	
 	export default {
 		components: {
 			GlobeVue,
 			PlayerVue,
 			PairsVue,
-			TradingStrategyVue
 			
 		},
 	};
